@@ -1,0 +1,19 @@
+.hotel-type-block {
+  width: 100%;
+}
+.hotel-type-block__thumbnail {
+  width: 100%;
+  padding-top: 100%;
+  background-size: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.hotel-type-block__description {
+  color: #5a5a5a;
+}
+.hotel-type-block__name {
+  font-size: 20px;
+}
+.hotel-type-block__quatity {
+  font-size: 14px;
+}

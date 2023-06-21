@@ -1,0 +1,17 @@
+.hotels {
+  margin-top: 10px;
+}
+
+.hotels__title {
+  padding: 16px 0;
+}
+
+.hotels__list {
+  display: flex;
+  list-style: none;
+}
+.hotels__item {
+  max-width: 25%;
+  flex-basis: 25%;
+  padding: 0 16px;
+}

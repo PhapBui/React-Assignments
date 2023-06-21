@@ -1,0 +1,7 @@
+.cities {
+  display: flex;
+}
+.city {
+  width: calc(100% / 3);
+  padding: 0 8px;
+}
