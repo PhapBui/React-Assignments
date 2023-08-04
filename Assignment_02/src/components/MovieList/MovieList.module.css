@@ -1,0 +1,9 @@
+.wrapper {
+  overflow: hidden;
+  padding: 0 10px;
+}
+
+.title {
+  color: white;
+  padding: 6px 0;
+}

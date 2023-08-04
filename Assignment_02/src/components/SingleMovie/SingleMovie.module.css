@@ -1,0 +1,13 @@
+.movie {
+  padding: 4px;
+  transition: all linear 0.2s;
+}
+
+.movie:hover {
+  transform: scale(1.2);
+}
+.movie img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}

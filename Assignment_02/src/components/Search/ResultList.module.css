@@ -1,0 +1,7 @@
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+}
+.movie {
+  width: calc(100% / 9);
+}

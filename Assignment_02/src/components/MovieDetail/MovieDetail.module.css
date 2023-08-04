@@ -1,0 +1,33 @@
+.wrapper {
+  padding: 20px 0;
+}
+.content {
+  display: flex;
+  color: white;
+}
+
+.content__left {
+  width: 50%;
+  flex-basis: 50%;
+  padding: 10px;
+}
+
+.title {
+  font-size: 48px;
+  padding: 24px 0;
+  border-bottom: 1px solid white;
+}
+
+.info {
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+.content__right {
+  width: 50%;
+  flex-basis: 50%;
+}
+.content__right img {
+  width: 100%;
+  height: auto;
+}

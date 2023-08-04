@@ -1,0 +1,49 @@
+.banner {
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  width: 50%;
+  position: absolute;
+  top: 50%;
+  left: 20px;
+}
+
+.title {
+  text-transform: capitalize;
+  font-size: 32px;
+  font-weight: bold;
+  padding: 0 0 20px 0;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+}
+.action {
+  padding: 4px 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.action__play {
+  margin-right: 6px;
+}
+.action button {
+  color: white;
+  border: none;
+  background-color: unset;
+}
+
+.description {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  white-space: pre-wrap;
+}
