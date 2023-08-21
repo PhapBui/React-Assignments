@@ -36,7 +36,7 @@ const authSlice = createSlice({
     // Save login status and current user to localstorage when logout
     logout: (state) => {
       state.isLoggedIn = false;
-      state.currentUser = undefined;
+      state.currentUser = {};
 
       saveToStorage("isLoggedIn", state.isLoggedIn);
       saveToStorage("currentUser", state.currentUser);

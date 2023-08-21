@@ -3,6 +3,7 @@ import Container from "react-bootstrap/esm/Container.js";
 import { images } from "../../assets/img";
 
 import "./AuthLayout.scss";
+import { Outlet } from "react-router-dom";
 
 const AuthLayout = ({ children }) => {
   return (
@@ -15,7 +16,7 @@ const AuthLayout = ({ children }) => {
       }}
       className="auth__container"
     >
-      {children}
+      <Outlet />
     </Container>
   );
 };

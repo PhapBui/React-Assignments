@@ -46,7 +46,7 @@ const NavBar = () => {
           </NavLink>
           <NavLink
             className="header__item"
-            to="/shop"
+            to="shop"
             onClick={() => handlerNavigate("/shop")}
           >
             Shop
@@ -64,7 +64,7 @@ const NavBar = () => {
         <Col className="header__right">
           <NavLink
             className="header__item"
-            to="/cart"
+            to="cart"
             onClick={() => handlerNavigate("/cart")}
           >
             <FaCartFlatbed />
@@ -73,7 +73,7 @@ const NavBar = () => {
           <NavLink
             className="header__item"
             onClick={handlerLogout}
-            to="/login"
+            to="login"
           >
             <AiOutlineUser />
             {isLoggined ? <Account currentUser={currentUser} /> : "Login"}

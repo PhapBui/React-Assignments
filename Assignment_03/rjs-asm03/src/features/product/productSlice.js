@@ -9,7 +9,7 @@ export const fetchProductById = createAsyncThunk(
     const productClicked = response.filter(
       (product) => product._id.$oid === productId
     );
-    return productClicked;
+    if (productClicked.length > 0) return productClicked;
   }
 );
 
@@ -75,7 +75,7 @@ export const productSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProductById.fulfilled, (state, action) => {
-      state.getProductById = action.payload[0];
+      if (action.payload) state.getProductById = action.payload[0];
     });
     builder.addCase(fetchRelateList.fulfilled, (state, action) => {
       state.relateList = action.payload;
