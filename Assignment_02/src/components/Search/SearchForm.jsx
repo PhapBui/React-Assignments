@@ -21,11 +21,12 @@ const SearchForm = () => {
       const fetchMovie = async () => {
         try {
           const res = await fetch(
-            `${baseUrl}${requests.fetchSearch}&query=${query}`,
+            `${baseUrl}${requests.fetchSearch}&keyword=${query}`,
             {
               headers: {
                 Authorization: "Bearer " + accessToken,
               },
+              method: "POST",
             }
           );
           const movies = await res.json();
@@ -65,10 +66,7 @@ const SearchForm = () => {
   };
   return (
     <>
-      <form
-        action=""
-        className={classes["search__form"]}
-      >
+      <form action="" className={classes["search__form"]}>
         <div className={classes["group__input"]}>
           <input
             type="text"
