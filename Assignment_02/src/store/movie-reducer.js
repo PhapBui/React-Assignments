@@ -10,6 +10,8 @@ export const movieInitialState = {
   fetchSearch: [],
   fetchTrending: [],
   fetchTopRated: [],
+  fetchGenres: [],
+  fetchMediaTypes: [],
 };
 
 export const movieReducer = (state, action) => {
@@ -48,6 +50,12 @@ export const movieReducer = (state, action) => {
 
     case type.fetchTrending:
       state.fetchTrending = action.payload;
+      return { ...state };
+    case type.fetchGenres:
+      state.fetchGenres = action.payload;
+      return { ...state };
+    case type.fetchMediaTypes:
+      state.fetchMediaTypes = action.payload;
       return { ...state };
 
     default:

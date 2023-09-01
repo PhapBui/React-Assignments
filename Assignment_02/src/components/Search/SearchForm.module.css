@@ -28,18 +28,30 @@
   width: 24px;
   border: none;
   background-color: white;
+  cursor: pointer;
 }
 
 .search__actions {
+  position: relative;
   padding: 24px;
   justify-content: flex-end;
+ 
 }
 .search__actions button {
   border: none;
   padding: 4px 8px;
   background-color: transparent;
+  cursor: pointer;
 }
 .search__actions button.action__search {
   background-color: #00bbec;
   color: white;
+}
+
+.search__options{
+  position: absolute;
+  left: 20px;
+}
+.search__options select{
+  cursor: pointer;
 }

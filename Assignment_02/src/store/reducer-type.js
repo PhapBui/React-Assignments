@@ -8,6 +8,8 @@ const type = {
   fetchRomanceMovies: "fetchRomanceMovies",
   fetchDocumentaries: "fetchDocumentaries",
   fetchSearch: "fetchSearch",
+  fetchGenres: "fetchGenres",
+  fetchMediaTypes: "fetchMediaTypes",
 };
 
 export default type;
