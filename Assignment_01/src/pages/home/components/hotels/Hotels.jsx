@@ -1,53 +1,39 @@
-import React from "react";
-import styles from "./Hotels.module.css";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import hotelApi from "../../../../api/hotelApi";
 import HotelBlock from "../../../../components/hotelBlock/HotelBlock";
-
-const hotels = [
-  {
-    name: "Aparthotel Stare Miasto",
-    city: "Madrid",
-    price: 120,
-    rate: 8.9,
-    type: "Excellent",
-    image_url: "./images/hotel_1.webp",
-  },
-  {
-    name: "Comfort Suites Airport",
-    city: "Austin",
-    price: 140,
-    rate: 9.3,
-    type: "Exceptional",
-    image_url: "./images/hotel_2.jpg",
-  },
-  {
-    name: "Four Seasons Hotel",
-    city: "Lisbon",
-    price: 99,
-    rate: 8.8,
-    type: "Excellent",
-    image_url: "./images/hotel_3.jpg",
-  },
-  {
-    name: "Hilton Garden Inn",
-    city: "Berlin",
-    price: 105,
-    rate: 8.9,
-    type: "Excellent",
-    image_url: "./images/hotel_4.jpg",
-  },
-];
+import { hotelActions } from "../../../../features/hotelSlice";
+import styles from "./Hotels.module.css";
+import { Link } from "react-router-dom";
 
 const Hotels = () => {
+  const dispatch = useDispatch();
+
+  const hotels = useSelector((state) => state.hotel.hotelList).slice(0, 8);
+
+  useEffect(() => {
+    const fetchTypes = async () => {
+      try {
+        const res = await hotelApi.getAll();
+        if (res.status === 0) throw new Error(res.message);
+
+        dispatch(hotelActions.getAllHotel(res.result));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchTypes();
+  }, [dispatch]);
+
   return (
     <div className={styles["hotels"]}>
       <h2 className={styles["hotels__title"]}>Homes guests love</h2>
       <ul className={styles["hotels__list"]}>
         {hotels.map((hotel) => (
-          <li
-            className={styles["hotels__item"]}
-            key={hotel.image_url}
-          >
-            <HotelBlock data={hotel} />
+          <li className={styles["hotels__item"]} key={hotel._id}>
+            <Link to={`detail/${hotel._id}`}>
+              <HotelBlock data={hotel} />
+            </Link>
           </li>
         ))}
       </ul>

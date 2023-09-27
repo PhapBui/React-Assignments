@@ -1,0 +1,7 @@
+.signup{
+    flex-grow: 1;
+}
+.signup h1{
+    text-align: center;
+    margin: 20px 0;
+}

@@ -1,6 +1,7 @@
 import React from "react";
 
 import styles from "./SearchListItem.module.css";
+import { Link } from "react-router-dom";
 
 const SearchListItem = ({ data }) => {
   return (
@@ -10,7 +11,7 @@ const SearchListItem = ({ data }) => {
         <img
           className={styles["hotel-item__image_url"]}
           alt={data.name}
-          src={data.image_url}
+          src={data.photos[0]}
         />
       </div>
       {/* Content */}
@@ -19,26 +20,23 @@ const SearchListItem = ({ data }) => {
         <div className={styles["hotel-item__header"]}>
           <h2 className={styles["hotel-item__name"]}>{data.name}</h2>
           <span className={styles["hotel-item__rate_text"]}>
-            {data.rate_text}
+            {data.rating > 4 ? "Excellent" : "Good"}
           </span>
-          <span className={styles["hotel-item__rate"]}>{data.rate}</span>
+          <span className={styles["hotel-item__rate"]}>{data.rating}</span>
         </div>
 
         {/* body */}
         <div className={styles["hotel-item__body"]}>
           <span className={styles["hotel-item__distance"]}>
-            {data.distance}
+            {data.distance}m from center
           </span>
-          <p className={styles["hotel-item__tag"]}>{data.tag}</p>
-          <div className={styles["hotel-item__description"]}>
-            {data.description}
-          </div>
+          <div className={styles["hotel-item__type"]}>{data.type}</div>
+          <div className={styles["hotel-item__description"]}>{data.desc}</div>
         </div>
 
         {/* footer */}
         <div className={styles["hotel-item__footer"]}>
           <div className={styles["hotel-item__footer-left"]}>
-            <div className={styles["hotel-item__type"]}>{data.type}</div>
             {data.free_cancel && (
               <div className={styles["hotel-item__free_cancel"]}>
                 <h4>Free cancellation</h4>
@@ -48,12 +46,12 @@ const SearchListItem = ({ data }) => {
           </div>
           <div className={styles["hotel-item__footer-right"]}>
             <div className={styles["hotel-item__price"]}>
-              <div>${data.price}</div>
+              <div>${data.cheapestPrice}</div>
               <p>Includees taxes and fees</p>
             </div>
-            <button className={styles["hotel-item__price"]}>
+            <Link to={`/detail/${data._id}`} className={styles["hotel-detail"]}>
               See availability
-            </button>
+            </Link>
           </div>
         </div>
       </div>

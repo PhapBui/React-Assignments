@@ -1,0 +1,98 @@
+.form-control {
+  padding: 0 12px;
+}
+.form-control h3 {
+  color: black;
+  padding: 8px 0;
+}
+.row {
+  display: flex;
+}
+
+.user__info {
+  flex-grow: 1;
+  padding: 0 20px;
+}
+.user__info > div {
+  display: flex;
+  flex-direction: column;
+}
+.user__info > div label {
+  padding: 8px 0;
+}
+.user__info > div input {
+  padding: 16px 12px;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+.room__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.room__item {
+  width: 50%;
+  max-width: 50%;
+  padding: 8px;
+}
+.room {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.room > div {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 20px;
+}
+
+.room__numbers {
+  display: flex;
+}
+.room__numbers label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #979797;
+  padding: 0 4px;
+  cursor: pointer;
+}
+.room__numbers label.hide {
+  display: none;
+  visibility: hidden;
+  user-select: none;
+}
+
+.price {
+  font-weight: 600;
+}
+.form__submit {
+  margin-top: 20px;
+}
+.form__submit select {
+  padding: 16px 24px;
+  border: 1px solid #979797;
+  outline: none;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.form__submit select option {
+  font-size: 16px;
+}
+.form__submit_btn {
+  display: inline-block;
+  padding: 16px 24px;
+  border-radius: 4px;
+  background-color: dodgerblue;
+  color: white;
+  border: 1px solid dodgerblue;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 60px;
+}

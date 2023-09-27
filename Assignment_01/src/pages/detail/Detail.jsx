@@ -3,28 +3,49 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./Detail.module.css";
 import Button from "../../components/UI/Button.jsx";
-
-const details = {
-  name: "Tower Street Apartments",
-  address: "Elton St 125 New york",
-  distance: "Excellent location - 500m from center",
-  price: "Book a stay over $114 at this property and get a free airport taxi",
-  photos: [
-    "./images/hotel_detail_1.jpg",
-    "./images/hotel_detail_2.jpg",
-    "./images/hotel_detail_3.jpg",
-    "./images/hotel_detail_4.jpg",
-    "./images/hotel_detail_5.jpg",
-    "./images/hotel_detail_6.jpg",
-  ],
-  title: "Stay in the heart of City",
-  description:
-    "Located a 5-minute walk from St. Florian's Gate in Krakow, Tower Street Apartments has accommodations with air conditioning and free WiFi.The units come with hardwood floors and feature a fully equipped kitchenette with a microwave, a flat - screen TV, and a private bathroom with shower and a hairdryer.A fridge is also offered, as well as an electric tea pot and a coffee machine.Popular points of interest near the apartment include Cloth Hall, Main Market Square and Town Hall Tower.The nearest airport is John Paul II International Kraków - Balice, 16.1 km from Tower Street Apartments, and the property offers a paid airport shuttle service.",
-  nine_night_price: 955,
-};
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useRef, useState } from "react";
+import hotelApi from "../../api/hotelApi";
+import { hotelActions } from "../../features/hotelSlice";
+import FormOrder from "../../components/forms/order/formOrder";
+import Section from "../../components/UI/Section";
+import transactionApi from "../../api/transaction";
 
 const Detail = () => {
-  const { photos } = details;
+  const [showFormOrder, setShowFormOrder] = useState(false);
+
+  const navigate = useNavigate();
+
+  // redux
+  const dispatch = useDispatch();
+  // get hotel by id
+  const hotelData = useSelector((state) => state.hotel.hotel);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+  const formRef = useRef();
+
+  // get hotelId from url
+  const { hotelId } = useParams();
+
+  // getch hotelById
+  useEffect(() => {
+    const fetchHotelData = async () => {
+      try {
+        const res = await hotelApi.getById(hotelId);
+        if (res.status === 0) throw new Error(res.message);
+        dispatch(hotelActions.fetchHotelById(res.result));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchHotelData();
+  }, [dispatch, hotelId]);
+
+  //
+  const { photos } = hotelData;
+
+  // button style
   const buttonStyle = {
     padding: "8px 16px",
     backgroundColor: "#0071c2",
@@ -32,22 +53,38 @@ const Detail = () => {
     border: "none",
     color: "#fff",
     fontWeight: 600,
+    cursor: "pointer",
   };
+
+  const handlerOrder = async (data) => {
+    try {
+      const res = await transactionApi.createNewTransaction(data);
+      if (res.status === 0) throw new Error(res.message);
+      navigate("/trans");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // scroll to form order
+  const handlerShowFormOrder = () => {
+    setShowFormOrder((prev) => !prev);
+  };
+  useEffect(() => {
+    if (showFormOrder) formRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [showFormOrder]);
   return (
-    <div>
+    <Section>
       <div className={styles["header"]}>
         <div className={styles["header__left"]}>
-          <h1>{details.name}</h1>
+          <h1>{hotelData.name}</h1>
           <div className={styles["address"]}>
-            <FontAwesomeIcon
-              icon={faLocationDot}
-              className={styles["icon"]}
-            />
-            <span>{details.address}</span>
+            <FontAwesomeIcon icon={faLocationDot} className={styles["icon"]} />
+            <span>{hotelData.address}</span>
           </div>
         </div>
         <div className={styles["header__right"]}>
           <Button
+            onClick={handlerShowFormOrder}
             text={"Reserve or Book Now!"}
             style={buttonStyle}
           />
@@ -55,46 +92,59 @@ const Detail = () => {
       </div>
 
       <div className={styles["body"]}>
-        <div className={styles["distance"]}>{details.distance}</div>
+        <div className={styles["distance"]}>
+          Excellent location - {hotelData.distance}m from center
+        </div>
 
-        <div className={styles["price"]}>{details.price}</div>
+        <div className={styles["price"]}>
+          Book a stay over ${hotelData.cheapestPrice} at this property and get a
+          free airport taxi
+        </div>
         <div className={styles["photos"]}>
           {photos &&
             photos.map((photo) => (
               <div key={photo}>
-                <img
-                  src={photo}
-                  alt={photo}
-                />
+                <img src={photo} alt={photo} />
               </div>
             ))}
         </div>
       </div>
+
       <div className={styles["footer"]}>
         <div className={styles["footer__left"]}>
-          <h3 className={styles["title"]}>{details.title}</h3>
-          <div className={styles["description"]}>{details.description}</div>
+          <h3 className={styles["title"]}>{hotelData.title}</h3>
+          <div className={styles["description"]}>{hotelData.desc}</div>
         </div>
         <div className={styles["footer__right"]}>
-          <h3>Perfect for a 9-night stay!</h3>
-          <p>
-            Located in the real heart of Krakow, this property has an excellent
-            location score of 9.8!
-          </p>
           <div className={styles["nine_night_price"]}>
-            <span className={styles["dollar"]}>
-              {" "}
-              ${details.nine_night_price}
-            </span>{" "}
-            <span className={styles["note"]}>(9 nights)</span>
+            <span className={styles["dollar"]}>${hotelData.cheapestPrice}</span>
+            <span className={styles["note"]}>(1 nights)</span>
           </div>
           <Button
+            onClick={handlerShowFormOrder}
             text={"Reserve or Book Now!"}
             style={buttonStyle}
           />
         </div>
       </div>
-    </div>
+
+      {showFormOrder &&
+        (isLoggedIn ? (
+          <FormOrder onSubmit={handlerOrder} hotelId={hotelId} ref={formRef} />
+        ) : (
+          <div
+            style={{
+              textAlign: "center",
+              marginTop: 20,
+              backgroundColor: "#ccc",
+              padding: 12,
+            }}
+          >
+            <h4>You need login for order</h4>
+            <Link to="/login">Login</Link>
+          </div>
+        ))}
+    </Section>
   );
 };
 

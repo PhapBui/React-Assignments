@@ -60,15 +60,6 @@
   padding: 4px 0;
 }
 
-.hotel-item__tag {
-  width: fit-content;
-  color: #fff;
-  background-color: #008009;
-  padding: 4px;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
 .hotel-item__description {
   padding: 4px 0;
   font-weight: bold;
@@ -90,7 +81,13 @@
 }
 
 .hotel-item__type {
-  padding: 4px 0;
+  width: fit-content;
+  text-transform: capitalize;
+  color: #fff;
+  background-color: #008009;
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
 .hotel-item__free_cancel {
@@ -108,11 +105,12 @@
   color: #8f8f8f;
   padding-bottom: 4px;
 }
-.hotel-item__footer-right button {
+
+.hotel-detail {
   color: #fff;
   padding: 12px 20px;
   background-color: #0071c2;
   border-radius: 4px;
   font-weight: bold;
-  border: none;
+  display: inline-block;
 }

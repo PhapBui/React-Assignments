@@ -1,0 +1,30 @@
+.table {
+  display: table;
+  border-collapse: collapse;
+  width: 100%;
+}
+.table td,
+.table th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+.table__header {
+  background-color: #32a4c1;
+}
+
+.Booked,
+.Checkin,
+.Checkout {
+  color: #209a0d;
+}
+
+.Booked {
+  background-color: #f69685;
+}
+.Checkin {
+  background-color: #39d139;
+}
+.Checkout {
+  background-color: #dedbfd;
+}

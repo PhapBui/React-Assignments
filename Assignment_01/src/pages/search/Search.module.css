@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
-  max-width: 1200px;
+  max-width: 100%;
+  width: 1200px;
   margin: 30px auto;
 }
 .sidebar {

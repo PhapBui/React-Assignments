@@ -3,10 +3,13 @@
   overflow: hidden;
   border-radius: 8px;
   line-height: 0;
+  cursor: pointer;
 }
 
 .city-block__thumbnail {
   width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
 }
 
 .city-block__description {

@@ -2,13 +2,11 @@ import React from "react";
 import Navbar from "../../../../components/navbar/Navbar.jsx";
 import Button from "../../../../components/UI/Button.jsx";
 import Sologan from "./Sologan.jsx";
-import Toplevel from "../../../../components/toplevel/Toplevel.jsx";
 import Gap from "../../../../components/UI/Gap.jsx";
 
 const TopBanner = () => {
   return (
-    <div>
-      <Toplevel />
+    <>
       <Navbar />
       <Sologan />
       <Button
@@ -21,7 +19,7 @@ const TopBanner = () => {
         }}
       />
       <Gap gap={"120px"} />
-    </div>
+    </>
   );
 };
 

@@ -6,16 +6,12 @@ const HotelBlock = ({ data }) => {
     <div className={styles["hotel-block"]}>
       <div
         className={styles["hotel-block__thumbnail"]}
-        style={{ backgroundImage: `url(${data.image_url})` }}
-      >
-        {" "}
-      </div>
-      <h3 className={styles["hotel-block__name"]}>
-        <a href="/detail">{data.name}</a>
-      </h3>
+        style={{ backgroundImage: `url(${data.photos[0]})` }}
+      ></div>
+      <h3 className={styles["hotel-block__name"]}>{data.name}</h3>
       <div className={styles["hotel-block__city"]}>{data.city}</div>
       <div className={styles["hotel-block__price"]}>
-        Starting from ${data.price}
+        Starting from ${data.cheapestPrice}
       </div>
       <div className={styles["hotel-block__review"]}>
         <div className={styles["hotel-block__rate"]}>{data.rate}</div>

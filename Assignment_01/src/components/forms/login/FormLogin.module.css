@@ -1,0 +1,28 @@
+.form-control{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    max-width: 200px;
+    margin:  auto;
+}
+
+.form-control input{
+    padding: 16px 10px;
+    background-color:#e8f0fe;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    display: inline-block;
+    width: 100%;
+}
+
+.form-control button{
+    display: inline-block;
+    background-color: #0071c2;
+    color: #fff;
+    padding: 16px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+}

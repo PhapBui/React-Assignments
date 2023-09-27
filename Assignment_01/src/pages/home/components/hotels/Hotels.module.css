@@ -8,6 +8,7 @@
 
 .hotels__list {
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
 }
 .hotels__item {

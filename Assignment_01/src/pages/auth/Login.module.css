@@ -1,0 +1,7 @@
+.login{
+    flex-grow: 1;
+}
+.login h1{
+    text-align: center;
+    margin: 20px 0;
+}

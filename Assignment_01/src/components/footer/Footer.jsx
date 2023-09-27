@@ -2,6 +2,7 @@ import React from "react";
 import FooterColumn from "./FooterColumn.jsx";
 
 import styles from "./Footer.module.css";
+import Section from "../UI/Section.jsx";
 
 const footerData = [
   {
@@ -62,14 +63,13 @@ const footerData = [
 
 const Footer = () => {
   return (
-    <footer className={styles["footer"]}>
-      {footerData.map((data) => (
-        <FooterColumn
-          key={data.col_number}
-          data={data.col_values}
-        />
-      ))}
-    </footer>
+    <Section>
+      <footer className={styles["footer"]}>
+        {footerData.map((data) => (
+          <FooterColumn key={data.col_number} data={data.col_values} />
+        ))}
+      </footer>
+    </Section>
   );
 };
 

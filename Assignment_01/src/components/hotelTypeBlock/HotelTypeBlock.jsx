@@ -12,7 +12,7 @@ const HotelTypeBlock = ({ data }) => {
       <div className={styles["hotel-type-block__description"]}>
         <h3 className={styles["hotel-type-block__name"]}>{data.name}</h3>
         <p className={styles["hotel-type-block__quatity"]}>
-          {data.count} hotels
+          {data.hotels} {data.name}
         </p>
       </div>
     </div>

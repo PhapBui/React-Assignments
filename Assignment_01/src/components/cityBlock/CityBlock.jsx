@@ -12,7 +12,9 @@ const CityBlock = ({ data }) => {
       />
       <div className={styles["city-block__description"]}>
         <h3 className={styles["city-block__name"]}>{data.name}</h3>
-        <p className={styles["city-block__sub-text"]}>{data.subText}</p>
+        <p className={styles["city-block__sub-text"]}>
+          {data.hotels} properties
+        </p>
       </div>
     </div>
   );
