@@ -35,8 +35,10 @@ const Table = ({ tableData }) => {
           ))
         ) : (
           <tr>
-            <h4>Your transactions is empy, back to home?</h4>
-            <Link to="/">Home</Link>
+            <div>
+              <h4>Your transactions is empy, back to home?</h4>
+              <Link to="/">Home</Link>
+            </div>
           </tr>
         )}
       </tbody>
