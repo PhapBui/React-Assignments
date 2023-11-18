@@ -10,7 +10,7 @@
 
 # Demo link
 
-https://nodejs-assignment-02-admin-page.vercel.app/login
+https://react-assignments-alpha.vercel.app/
 
 # Deployment guide (on local)
 
